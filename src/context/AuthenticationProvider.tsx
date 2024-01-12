@@ -31,17 +31,13 @@ type Dispatch = (action: IAction) => void;
 
 // separate contexts for the state and dispatch
 const AuthenticationStateContext = createContext<IState | undefined>(undefined);
-const AuthenticationDispatchContext = createContext<Dispatch | undefined>(
-  undefined
-);
+const AuthenticationDispatchContext = createContext<Dispatch | undefined>(undefined);
 
 // custom hook for the state
 export const useAuthenticationStateContext = () => {
   const context = useContext(AuthenticationStateContext);
   if (context === undefined) {
-    throw new Error(
-      "useAuthenticationStateContext must be used within a AuthenticationStateContext.Provider"
-    );
+    throw new Error("useAuthenticationStateContext must be used within a AuthenticationStateContext.Provider");
   }
   return context;
 };
@@ -50,9 +46,7 @@ export const useAuthenticationStateContext = () => {
 export const useAuthenticationDispatchContext = () => {
   const context = useContext(AuthenticationDispatchContext);
   if (context === undefined) {
-    throw new Error(
-      "useAuthenticationDispatchContext must be used within a AuthenticationDispatchContext.Provider"
-    );
+    throw new Error("useAuthenticationDispatchContext must be used within a AuthenticationDispatchContext.Provider");
   }
   return context;
 };
@@ -70,9 +64,7 @@ export const AuthenticationProvider = ({ children }: any) => {
 
   return (
     <AuthenticationStateContext.Provider value={state}>
-      <AuthenticationDispatchContext.Provider value={dispatch}>
-        {children}
-      </AuthenticationDispatchContext.Provider>
+      <AuthenticationDispatchContext.Provider value={dispatch}>{children}</AuthenticationDispatchContext.Provider>
     </AuthenticationStateContext.Provider>
   );
 };

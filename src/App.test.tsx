@@ -1,5 +1,4 @@
 /* eslint-disable testing-library/no-unnecessary-act */
-import React from "react";
 import { render, screen, act } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import App from "./App";
@@ -59,11 +58,13 @@ describe("App", () => {
       name: /Logout/i,
     });
 
+    // verify that the email is displayed
     expect(await screen.findByText(/example@email.com/i)).toBeInTheDocument();
 
     // verify that the logout button is rendered
     expect(logoutButton).toBeInTheDocument();
   });
+
   it("should logout the user", async () => {
     render(<SampleApp />);
 
@@ -88,7 +89,6 @@ describe("App", () => {
     });
 
     // check also that the email is displayed
-
     expect(await screen.findByText(/example@email.com/i)).toBeInTheDocument();
 
     // obtain the logout button
@@ -100,13 +100,11 @@ describe("App", () => {
     });
 
     // obtain the login button
-
     const loginButtonAfterLogout = screen.getByRole("button", {
       name: /Login/i,
     });
 
     // verify that the login button is rendered
-
     expect(loginButtonAfterLogout).toBeInTheDocument();
   });
 });

@@ -1,13 +1,5 @@
-import React, { useState } from "react";
-import {
-  Button,
-  Container,
-  CssBaseline,
-  TextField,
-  Typography,
-  Grid,
-  Box,
-} from "@mui/material";
+import React from "react";
+import { Button, Container, CssBaseline, TextField, Typography, Box } from "@mui/material";
 import {
   AuthenticationActionTypes,
   useAuthenticationDispatchContext,
@@ -15,27 +7,18 @@ import {
 } from "./context/AuthenticationProvider";
 
 function App() {
-  // TODO : Use context state instead of local state
-  // const { authState } = useAuthenticationStateContext();
-  // const { authDispatch } = useAuthenticationStateContext();
-
   const { isAuthenticated, userData } = useAuthenticationStateContext();
   const dispatch = useAuthenticationDispatchContext();
 
-  // TODO : Use context state instead of local state
   const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const payload = e.currentTarget
-      .elements as typeof e.currentTarget.elements & {
+    const payload = e.currentTarget.elements as typeof e.currentTarget.elements & {
       email: { value: string };
       password: { value: string };
     };
 
-    if (
-      payload.email.value === "example@email.com" &&
-      payload.password.value === "password"
-    ) {
+    if (payload.email.value === "example@email.com" && payload.password.value === "password") {
       dispatch({
         type: AuthenticationActionTypes.SET_LOGGED_EMPLOYEE,
         user: {
@@ -46,7 +29,6 @@ function App() {
     }
   };
 
-  // TODO : Use context state instead of local state
   const handleLogout = () => {
     dispatch({
       type: AuthenticationActionTypes.LOGOUT_EMPLOYEE,
@@ -87,13 +69,7 @@ function App() {
   const renderLogoutForm = () => (
     <div>
       <Typography variant="h6">Logged in as: {userData.userEmail}</Typography>
-      <Button
-        type="button"
-        fullWidth
-        variant="contained"
-        color="secondary"
-        onClick={handleLogout}
-      >
+      <Button type="button" fullWidth variant="contained" color="secondary" onClick={handleLogout}>
         Logout
       </Button>
     </div>

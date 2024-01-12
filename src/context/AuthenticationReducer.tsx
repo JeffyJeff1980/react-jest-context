@@ -1,10 +1,7 @@
 import { IState, IAction } from "./AuthenticationProvider";
 import { AuthenticationActionTypes } from "./AuthenticationProvider";
 
-export const AuthenticationReducer = (
-  state: IState,
-  action: IAction
-): IState => {
+export const AuthenticationReducer = (state: IState, action: IAction): IState => {
   switch (action.type) {
     case AuthenticationActionTypes.SET_LOGGED_EMPLOYEE: {
       console.log("Action: SET_LOGGED_EMPLOYEE");
