@@ -1,32 +1,60 @@
 import React, { useState } from "react";
-import { Button, Container, CssBaseline, TextField, Typography, Grid, Box } from "@mui/material";
-import { useAuthenticationStateContext } from "./context/AuthenticationProvider";
+import {
+  Button,
+  Container,
+  CssBaseline,
+  TextField,
+  Typography,
+  Grid,
+  Box,
+} from "@mui/material";
+import {
+  AuthenticationActionTypes,
+  useAuthenticationDispatchContext,
+  useAuthenticationStateContext,
+} from "./context/AuthenticationProvider";
 
 function App() {
   // TODO : Use context state instead of local state
   // const { authState } = useAuthenticationStateContext();
   // const { authDispatch } = useAuthenticationStateContext();
 
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const { isAuthenticated, userData } = useAuthenticationStateContext();
+  const dispatch = useAuthenticationDispatchContext();
 
   // TODO : Use context state instead of local state
-  const handleLogin = () => {
-    if (email === "example@email.com" && password === "password") {
-      setLoggedIn(true);
+  const handleLogin = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const payload = e.currentTarget
+      .elements as typeof e.currentTarget.elements & {
+      email: { value: string };
+      password: { value: string };
+    };
+
+    if (
+      payload.email.value === "example@email.com" &&
+      payload.password.value === "password"
+    ) {
+      dispatch({
+        type: AuthenticationActionTypes.SET_LOGGED_EMPLOYEE,
+        user: {
+          userName: "John Doe",
+          userEmail: "example@email.com",
+        },
+      });
     }
   };
 
   // TODO : Use context state instead of local state
   const handleLogout = () => {
-    setLoggedIn(false);
-    setEmail("");
-    setPassword("");
+    dispatch({
+      type: AuthenticationActionTypes.LOGOUT_EMPLOYEE,
+    });
   };
 
   const renderLoginForm = () => (
-    <form noValidate>
+    <form noValidate onSubmit={handleLogin}>
       <TextField
         variant="outlined"
         margin="normal"
@@ -37,25 +65,20 @@ function App() {
         name="email"
         autoComplete="email"
         autoFocus
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
       />
+
       <TextField
         variant="outlined"
         margin="normal"
         required
         fullWidth
         id="password"
-        aria-label="password"
         label="Password"
         name="password"
         type="password"
-        data-testid="password"
         autoComplete="current-password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
       />
-      <Button type="button" fullWidth variant="contained" color="primary" onClick={handleLogin}>
+      <Button type="submit" fullWidth variant="contained" color="primary">
         Login
       </Button>
     </form>
@@ -63,8 +86,14 @@ function App() {
 
   const renderLogoutForm = () => (
     <div>
-      <Typography variant="h6">Logged in as: {email}</Typography>
-      <Button type="button" fullWidth variant="contained" color="secondary" onClick={handleLogout}>
+      <Typography variant="h6">Logged in as: {userData.userEmail}</Typography>
+      <Button
+        type="button"
+        fullWidth
+        variant="contained"
+        color="secondary"
+        onClick={handleLogout}
+      >
         Logout
       </Button>
     </div>
@@ -76,9 +105,9 @@ function App() {
       <div>
         <Box mt={4}>
           <Typography component="h1" variant="h5">
-            {loggedIn ? "Welcome!" : "Login"}
+            {isAuthenticated ? "Welcome!" : "Login"}
           </Typography>
-          {loggedIn ? renderLogoutForm() : renderLoginForm()}
+          {isAuthenticated ? renderLogoutForm() : renderLoginForm()}
         </Box>
       </div>
     </Container>
