@@ -10,6 +10,7 @@ To run this application locally, follow these steps:
 
 ```bash
 git clone https://github.com/JeffyJeff1980/react-jest-context.git
+```
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -51,6 +52,7 @@ This project includes unit tests using React Testing Library (RTL) and Jest. To 
 
 ```bash
 npm test
+```
 
 # Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
