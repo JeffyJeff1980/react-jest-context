@@ -42,13 +42,13 @@ describe("App", () => {
     // obtain the login button
     const loginButton = screen.getByRole("button", { name: /Login/i });
 
-    // enter the email address
-    userEvent.type(emailTextBox, "example@email.com");
-
-    // enter the password
-    userEvent.type(passwordTextBox, "password");
-
     act(() => {
+      // enter the email address
+      userEvent.type(emailTextBox, "example@email.com");
+
+      // enter the password
+      userEvent.type(passwordTextBox, "password");
+
       // click the login button
       userEvent.click(loginButton);
     });
@@ -80,13 +80,13 @@ describe("App", () => {
     // obtain the login button
     const loginButton = screen.getByRole("button", { name: /Login/i });
 
-    // enter the email address
-    userEvent.type(emailTextBox, "example@email.com");
-
-    // enter the password
-    userEvent.type(passwordTextBox, "password");
-
     act(() => {
+      // enter the email address
+      userEvent.type(emailTextBox, "example@email.com");
+
+      // enter the password
+      userEvent.type(passwordTextBox, "password");
+
       // click the login button
       userEvent.click(loginButton);
     });
