@@ -68,7 +68,9 @@ function App() {
 
   const renderLogoutForm = () => (
     <div>
-      <Typography variant="h6">Logged in as: {userData.userEmail}</Typography>
+      <Typography variant="h6">
+        Logged in as: {userData.userName} ({userData.userEmail}){" "}
+      </Typography>
       <Button type="button" fullWidth variant="contained" color="secondary" onClick={handleLogout}>
         Logout
       </Button>

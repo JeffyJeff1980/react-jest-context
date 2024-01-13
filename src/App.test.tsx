@@ -61,6 +61,9 @@ describe("App", () => {
     // verify that the email is displayed
     expect(await screen.findByText(/example@email.com/i)).toBeInTheDocument();
 
+    // verify that the username is displayed
+    expect(await screen.findByText(/John Doe/i)).toBeInTheDocument();
+
     // verify that the logout button is rendered
     expect(logoutButton).toBeInTheDocument();
   });
