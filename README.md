@@ -1,4 +1,15 @@
-# Getting Started with Create React App
+# Testing a React App and the Context API with Jest
+
+This is a simple React application built with TypeScript and Material UI that provides a login/logout form. Users can enter their email and password to log in and see a logout button after successful login.
+
+## Installation
+
+To run this application locally, follow these steps:
+
+1. Clone this repository to your local machine:
+
+```bash
+git clone https://github.com/JeffyJeff1980/react-jest-context.git
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -8,7 +19,7 @@ In the project directory, you can run:
 
 ### `npm start`
 
-Runs the app in the development mode.\
+Runs the app in the development mode.
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 The page will reload if you make edits.\
@@ -29,18 +40,26 @@ Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+# Usage
+- Enter your email and password in the login form.
+- Click the "Login" button to log in.
+- After successful login, you will see a "Logout" button.
+- Click the "Logout" button to log out.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+# Testing
+This project includes unit tests using React Testing Library (RTL) and Jest. To run the tests, use the following command:
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```bash
+npm test
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+# Contributing
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+## Fork the repository.
+- Create a new branch for your feature or bug fix.
+- Make your changes and commit them.
+- Push your changes to your fork.
+- Create a pull request to the main repository.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+# License
+This project is licensed under the MIT License - see the LICENSE file for details.
